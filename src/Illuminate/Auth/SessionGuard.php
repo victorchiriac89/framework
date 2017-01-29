@@ -780,6 +780,17 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     {
         return 'login_'.$this->name.'_'.sha1(static::class);
     }
+    
+    /**
+     * Get the guard name for middleware usage
+     * This can be used in order to make redirect if auth to $guard/dashboard
+     *
+     * @return string
+     */
+    public function getGuardName()
+    {
+        return $this->name;
+    }
 
     /**
      * Get the name of the cookie used to store the "recaller".
